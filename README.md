@@ -1,24 +1,7 @@
 # ECULegPC
 
-**v0.78** — Professional ECU binary editor for desktop.  
+**v0.80** — Professional ECU binary editor for desktop.  
 PC port of the ECULeg Android app, built with Python + PyQt6.
-
----
-
-## Requirements
-
-```
-pip install PyQt6
-```
-
-> `PyQt6-Qt6` and `PyQt6-sip` are pulled in automatically.  
-> For SVG toolbar icons (recommended): `pip install PyQt6-Qt6 PyQt6.QtSvg` — included with a standard PyQt6 install.
-
-## Run
-
-```
-python main.py
-```
 
 ---
 
@@ -89,7 +72,7 @@ Switch to **3D**:
 - Channels are auto-matched to axis names/units on first load; previous selections are restored when the log is reloaded
 - **Live cursor overlay** — as the log playhead moves, the grid highlights up to four cells bracketing the current value using bilinear interpolation, with weighted opacity showing proximity
 - Cyan cursor triangles on the frozen axis header strips mark the exact interpolated position
-- **PID CSV import** — load a PID definition file to add channel descriptions and units
+- **PID CSV import** — load a PID definition file to add channel descriptions, units and scaling.  If a PID CSV is not loaded items will be scaled by data swing within the log (NOT DESIRABLE) 
 
 ---
 
@@ -122,40 +105,6 @@ Switch to **3D**:
 | **Default precision** | Decimal places used for tables whose definition does not specify a precision value. |
 | **Drag & drop behaviour** | Ask for confirmation or replace silently when dropping a file while one is already open. |
 | **Exit behaviour** | Prompt / auto-save / discard on close with unsaved changes. |
-
----
-
-## File structure
-
-```
-main.py                  Entry point; applies config cell-size settings at startup
-core/
-  definition.py          Internal XLEG data model (Definition, Table, Axis, StorageType)
-  bin_file.py            Binary file read/write with endian and float support
-  table_data.py          Table load/save, undo/redo, axis range redistribution,
-                         linear interpolation helpers
-  math_eval.py           Expression evaluator + automatic inverse equation builder
-  config.py              JSON config (recent files, window state, display prefs)
-  log_data.py            Log/PID data model
-  version.py             Application version string
-parsers/
-  xdf_parser.py          TunerPro XDF parser
-  xml_parser.py          ECU XML parser
-  xleg_parser.py         XLEG native parser + XDF / XML / XLEG writers
-  pid_csv.py             PID definition CSV importer
-  log_csv.py             Log data CSV importer
-ui/
-  main_window.py         Main window: tree panel, tabbed workspace, toolbar, menus
-  table_editor.py        Grid view (frozen headers, inline editing, smoothing,
-                         axis range dialog, log overlay), waterfall/3D view switcher
-  waterfall_view.py      Line-chart view with draggable data points
-  surface_view.py        3D orthographic polygon surface
-  log_viewer.py          Multi-channel waveform viewer with zoom and pan
-  definition_editor.py   In-app definition creator/editor
-  settings_dialog.py     Preferences dialog
-  about_dialog.py        About screen
-  icons.py               SVG toolbar icons + application icon (rendered at runtime)
-```
 
 ---
 
