@@ -1,6 +1,6 @@
 # ECULegPC
 
-**v0.80** — Professional ECU binary editor for desktop.  
+**v0.81** — Professional ECU binary editor for desktop.  
 PC port of the ECULeg Android app, built with Python + PyQt6.
 
 ---
