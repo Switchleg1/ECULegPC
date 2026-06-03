@@ -5,7 +5,7 @@ PC port of the ECULeg Android app, built with Python + PyQt6.
 
 
 <p align="center">
-  <img src="https://github.com/Switchleg1/ECULegPC/eculeg.png?raw=true" width="400">
+  <img src="https://github.com/Switchleg1/ECULegPC/blob/main/eculeg.png?raw=true" width="400">
 </p><br>
 ---
 
